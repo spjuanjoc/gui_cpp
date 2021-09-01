@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(hello_qt VERSION 0.0.1 LANGUAGES CXX)
+project(hello_gtk4 VERSION 0.0.1 LANGUAGES CXX)
 
 add_executable(${PROJECT_NAME} main.cpp)
 
@@ -11,16 +11,14 @@ if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
 endif()
 
 include(${CMAKE_BINARY_DIR}/conan.cmake)
-#conan_cmake_run(CONANFILE conanfile.txt BASIC_SETUP NO_OUTPUT_DIRS BUILD missing)
+conan_cmake_run(CONANFILE conanfile.txt BASIC_SETUP NO_OUTPUT_DIRS)
 
 
 ## Find third-party packages
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_BINARY_DIR})
-#find_package(fmt REQUIRED)
-find_package(Qt6 REQUIRED)
+find_package(gtk REQUIRED)
 
-#message(STATUS ${Qt5_LIBRARIES})
 
 ## Target
-target_link_libraries(${PROJECT_NAME} PRIVATE #[[fmt::fmt]] Qt6::Qt6)
+target_link_libraries(${PROJECT_NAME} PRIVATE gtk::gtk)
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
