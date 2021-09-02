@@ -1,0 +1,6 @@
+[requires]
+  fmt/8.0.0
+  imgui-sfml/2.2@bincrafters/stable
+
+[generators]
+  cmake_find_package
