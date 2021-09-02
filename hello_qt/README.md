@@ -27,7 +27,7 @@ build_type=Debug
 
 ```shell
 mkdir build && cd build
-conan install .. --build=missing
+conan install .. --build=missing --profile=Gcc
 cmake -DCMAKE_MODULE_PATH=$PWD -DCMAKE_BUILD_TYPE=Debug ..
 cmake --build .
 ```

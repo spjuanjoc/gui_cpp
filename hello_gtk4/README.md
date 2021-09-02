@@ -1,5 +1,7 @@
 # Hello Gtkmm
 
+Linux only
+
 ## Install
 
 Requires `gcc-8` or greater
