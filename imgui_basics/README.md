@@ -1,7 +1,17 @@
-# Hello ImGui
+# ImGui Basics
 
-ImGUI requires a backend.
-This example uses SFML as backend, with an already combined library from a
-conan-bincrafters [recipe](https://bincrafters.jfrog.io/ui/repos/tree/Properties/conan%2Fbincrafters)
+This is a slightly more elaborated example of the "Hello World" for ImGUI that
+allows to:
 
-[Example](https://eliasdaler.github.io/using-imgui-with-sfml-pt1/)
+- Update the window title
+- Change the background color
+- Check some options from a checkbox
+- Show text in a box
+
+## Uses
+
+- CMake
+- std 17
+- conan + bincrafters
+- ImGUI + SFML
+- fmt

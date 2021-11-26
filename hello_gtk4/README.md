@@ -1,31 +1,16 @@
-# Hello Gtkmm
+# Hello Gtk4
 
-Linux only
+This is a "Hello World" example of a GUI using Gtk version 4.
+Gtk is Linux only.
 
-## Install
+## Requirements
 
-Requires `gcc-8` or greater
+- CMake
+- std 11
+- conan
 
-The Conan profile must have the compiler.version >= 8
 
-```shell
-$ conan profile show Gcc8
-Configuration for profile Gcc8:
-
-[settings]
-os=Linux
-os_build=Linux
-arch=x86_64
-arch_build=x86_64
-compiler=gcc
-compiler.version=8
-compiler.libcxx=libstdc++11
-build_type=Debug
-[options]
-[build_requires]
-[env]
-```
-
+## Build
 
 ```shell
 mkdir build && cd build
@@ -34,27 +19,6 @@ cmake -DCMAKE_MODULE_PATH=$PWD -DCMAKE_BUILD_TYPE=Debug ..
 cmake --build .
 ```
 
+## See
 
-## Dependencies
-
-If already exist, remove from ~/.conan/data the following packages:
-
-- libjpeg
-- bzip2
-- libiconv
-- zlib
-- libpng
-- freetype
-- pkgconf
-- libuuid
-- xorg
-- libffi
-- pcre pcre2
-- libelf
-- libselinux
-- glib
-- qt
-
-## Example 
-
-[Hello Qt](https://doc.qt.io/archives/3.3/tutorial1-01.html)
+[Gtk hello world](https://www.gtk.org/docs/getting-started/hello-world)

@@ -1,5 +1,14 @@
 # Hello Qt
 
+This is a "Hello World" for Qt6
+
+## Uses
+
+- CMake
+- std 17
+- conan
+- gcc8 for Qt version 6
+
 ## Install
 
 Requires `gcc-8` or greater
@@ -27,7 +36,7 @@ build_type=Debug
 
 ```shell
 mkdir build && cd build
-conan install .. --build=missing --profile=Gcc
+conan install .. --build=missing --profile=Gcc8
 cmake -DCMAKE_MODULE_PATH=$PWD -DCMAKE_BUILD_TYPE=Debug ..
 cmake --build .
 ```
@@ -53,6 +62,6 @@ If already exist, remove from ~/.conan/data the following packages:
 - glib
 - qt
 
-## Example 
+## See 
 
 [Hello Qt](https://doc.qt.io/archives/3.3/tutorial1-01.html)
