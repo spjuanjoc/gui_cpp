@@ -1,0 +1,5 @@
+[requires]
+  wxwidgets/3.1.5@bincrafters/stable
+
+[generators]
+  cmake_find_package
