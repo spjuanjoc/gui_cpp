@@ -5,6 +5,9 @@
 #include <imgui-SFML.h>
 #include <imgui.h>
 
+constexpr auto font_filename = "share/calibri-font-family/calibri-regular.ttf";
+constexpr auto font_size = 22.0f;
+
 template<typename std::size_t SIZE>
 void renderCheckbox(const std::string& label, std::array<const char*, SIZE> options, std::array<bool, SIZE>& states)
 {
@@ -106,7 +109,12 @@ int main()
 
   ImGui::SFML::Init(main_window);
   ImGui::GetStyle().ScaleAllSizes(scale);
-  ImGui::GetIO().FontGlobalScale = scale;
+  ImGuiIO& io = ImGui::GetIO();
+
+  io.Fonts->Clear();
+  io.Fonts->AddFontFromFileTTF(font_filename, font_size);
+  ImGui::SFML::UpdateFontTexture();
+  //  ImGui::GetIO().FontGlobalScale = scale;
   //  main_window.resetGLStates();
 
   main_window.setFramerateLimit(frame_rate);
