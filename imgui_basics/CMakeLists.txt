@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.20)
-project(imgui_basics VERSION 0.0.1 LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.19)
+project(imgui_basics VERSION "0.0.1" LANGUAGES CXX)
 
 add_executable(${PROJECT_NAME} main.cpp)
 
@@ -23,6 +23,9 @@ find_package(ImGui-SFML REQUIRED)
 ## Target
 target_link_libraries(${PROJECT_NAME} PRIVATE ImGui-SFML::ImGui-SFML fmt::fmt)
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
-target_include_directories(${PROJECT_NAME} PRIVATE ${imgui_INCLUDES})
+#target_include_directories(${PROJECT_NAME} PRIVATE ${imgui_INCLUDES})
 
-message(STATUS "imgui_INCLUDES ${imgui_INCLUDES}")
+#message(STATUS "imgui_INCLUDES ${imgui_INCLUDES}")
+
+## Copy resources
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/share DESTINATION ${CMAKE_CURRENT_BINARY_DIR})

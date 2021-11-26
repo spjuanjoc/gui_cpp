@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.19)
 project(hello_qt VERSION 0.0.1 LANGUAGES CXX)
 
 add_executable(${PROJECT_NAME} main.cpp)
@@ -12,7 +12,7 @@ endif()
 
 include(${CMAKE_BINARY_DIR}/conan.cmake)
 #conan_cmake_run(CONANFILE conanfile.txt BASIC_SETUP NO_OUTPUT_DIRS BUILD missing)
-
+# Run manually from ./build: conan install .. --build=missing --profile=Gcc8
 
 ## Find third-party packages
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_BINARY_DIR})
