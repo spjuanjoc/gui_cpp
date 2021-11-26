@@ -1,6 +1,6 @@
 #include <gtk/gtk.h>
 
-// https://www.gtk.org/docs/getting-started/hello-world
+
 static void print_hello(GtkWidget* widget, gpointer data)
 {
   g_print("Hello World\n");
