@@ -1,0 +1,5 @@
+[requires]
+  sfml/2.5.1@bincrafters/stable
+
+[generators]
+  cmake_find_package
