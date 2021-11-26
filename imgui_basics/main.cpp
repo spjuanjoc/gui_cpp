@@ -90,6 +90,26 @@ void pollMainWindow(sf::RenderWindow& main_window, sf::Event& event)
   }
 }
 
+static void addOverlayBox(const std::string& label, const std::string& data)
+{
+  ImVec2         window_pos{0,0};
+  constexpr auto transparency = 0.25f;
+  ImGuiIO&         io           = ImGui::GetIO();
+  ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize
+                                  | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing
+                                  | ImGuiWindowFlags_NoNav;
+
+  ImGui::SetNextWindowBgAlpha(transparency);  // Transparent background
+  ImGui::SetNextWindowPos(window_pos, ImGuiCond_FirstUseEver);
+
+  if (ImGui::Begin(label.c_str(), nullptr, window_flags))
+  {
+    ImGui::TextUnformatted(data.c_str());
+  }
+
+  ImGui::End();
+}
+
 int main()
 {
   const auto  width        = 800;
@@ -138,6 +158,9 @@ int main()
 
     // Box 4
     renderCheckbox<options.size()>("Checkbox1", options, states);
+
+    // Box 5
+    addOverlayBox("Overlay 1", "Some text in\nan overlay box");
 
     main_window.clear(background_color);
     ImGui::SFML::Render(main_window);
