@@ -4,12 +4,6 @@
 #include <imgui-SFML.h>
 #include <imgui.h>
 
-void addTextBox(const std::string& label, const std::string& data)
-{
-  ImGui::Begin(label.c_str());
-  ImGui::TextUnformatted(data.c_str());
-  ImGui::End();
-}
 
 void pollMainWindow(sf::RenderWindow& main_window, sf::Event& event)
 {
@@ -26,22 +20,14 @@ void pollMainWindow(sf::RenderWindow& main_window, sf::Event& event)
 
 int main()
 {
-  constexpr auto width        = 640;
-  constexpr auto height       = 480;
-  constexpr auto frame_rate   = 30;
-  constexpr auto scale        = 2.0f;
-  constexpr auto window_title = "Window 1";
+  sf::RenderWindow main_window(sf::VideoMode(640, 480), "ImGui - Window");
+  main_window.setFramerateLimit(60);
   sf::Clock      delta_clock{};
 
-  sf::RenderWindow main_window(sf::VideoMode(width, height), window_title);
-  main_window.setFramerateLimit(frame_rate);
-
   ImGui::SFML::Init(main_window);
-  ImGui::GetStyle().ScaleAllSizes(scale);
-  ImGui::GetIO().FontGlobalScale = scale;
-
-  main_window.setVerticalSyncEnabled(true);
-  //  main_window.setTitle(window_title);
+  ImGui::GetStyle().ScaleAllSizes(2.0f);
+  ImGui::GetIO().FontGlobalScale = 2.0f;
+//  main_window.setVerticalSyncEnabled(true);
 
   while (main_window.isOpen())
   {
@@ -49,8 +35,9 @@ int main()
     pollMainWindow(main_window, event);
     ImGui::SFML::Update(main_window, delta_clock.restart());
 
-    addTextBox("Box1", "Hello world from ImGUI + SFML");
-    addTextBox("Box2", "Hello world from ImGUI + SFML 2");
+    ImGui::Begin("Box1");
+    ImGui::TextUnformatted("Hello world from ImGUI + SFML");
+    ImGui::End();
 
     main_window.clear();
     ImGui::SFML::Render(main_window);
