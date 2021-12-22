@@ -4,7 +4,6 @@
 #include <imgui-SFML.h>
 #include <imgui.h>
 
-
 void pollMainWindow(sf::RenderWindow& main_window, sf::Event& event)
 {
   while (main_window.pollEvent(event))
@@ -22,12 +21,11 @@ int main()
 {
   sf::RenderWindow main_window(sf::VideoMode(640, 480), "ImGui - Window");
   main_window.setFramerateLimit(60);
-  sf::Clock      delta_clock{};
+  sf::Clock delta_clock{};
 
   ImGui::SFML::Init(main_window);
   ImGui::GetStyle().ScaleAllSizes(2.0f);
   ImGui::GetIO().FontGlobalScale = 2.0f;
-//  main_window.setVerticalSyncEnabled(true);
 
   while (main_window.isOpen())
   {

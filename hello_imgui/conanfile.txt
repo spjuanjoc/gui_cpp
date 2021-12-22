@@ -1,5 +1,5 @@
 [requires]
-  imgui-sfml/2.2@bincrafters/stable
+  imgui-sfml/2.5@bincrafters/stable
 
 [generators]
   cmake_find_package
