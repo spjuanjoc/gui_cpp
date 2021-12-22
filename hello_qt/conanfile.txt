@@ -6,4 +6,4 @@
   cmake_find_package
 
 [options]
-  *:shared=True
+  qt:shared=True
