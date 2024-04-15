@@ -1,0 +1,7 @@
+[requires]
+  fmt/10.0.0
+  imgui/1.90.5
+  sfml/2.6.1
+
+[generators]
+  cmake_find_package
