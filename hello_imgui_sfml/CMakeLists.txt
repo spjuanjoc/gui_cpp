@@ -6,8 +6,17 @@ project(hello_imgui_sfml
   LANGUAGES CXX
 )
 
-add_executable(${PROJECT_NAME} main.cpp)
+## Set the project as an executable target # 1
+add_executable(${PROJECT_NAME}
+  src/ImguiSFML/imgui-SFML.cpp
+  src/main.cpp
+)
 
+## Set the project as an executable target # 2
+add_executable(${PROJECT_NAME}_multi
+  src/ImguiSFML/imgui-SFML.cpp
+  src/main2.cpp
+)
 
 ## Setup Conan < 2.0
 if (NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
@@ -34,13 +43,29 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_BINARY_DIR})
 find_package(fmt REQUIRED)
 find_package(imgui REQUIRED)
 find_package(SFML REQUIRED)
+#find_package(ImGui-SFML REQUIRED)
 
 
-## Target
+## Target # 1
 target_link_libraries(${PROJECT_NAME}
   PRIVATE
   ${fmt_LIBRARIES}
   ${imgui_LIBRARIES}
   ${SFML_LIBRARIES}
 )
+
+target_include_directories(${PROJECT_NAME} PRIVATE include)
+
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
+
+## Target # 2
+target_link_libraries(${PROJECT_NAME}_multi
+  PRIVATE
+  ${fmt_LIBRARIES}
+  ${imgui_LIBRARIES}
+  ${SFML_LIBRARIES}
+)
+
+target_include_directories(${PROJECT_NAME}_multi PRIVATE include)
+
+target_compile_features(${PROJECT_NAME}_multi PRIVATE cxx_std_20)

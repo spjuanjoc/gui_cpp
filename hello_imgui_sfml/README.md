@@ -3,6 +3,8 @@
 This is a "Hello World" for ImGUI. ImGUI requires a backend.
 SFML works as the backend.
 
+This project contains the boilerplate code for imgui-SFML bindings
+for an easier integration between both.
 
 ## Versions
 

@@ -2,6 +2,7 @@
   fmt/10.0.0
   imgui/1.90.5
   sfml/2.6.1
+#  imgui-sfml/2.2@bincrafters/stable
 
 [generators]
   cmake_find_package
