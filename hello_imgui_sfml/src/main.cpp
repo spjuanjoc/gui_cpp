@@ -1,4 +1,4 @@
-#include "ImguiSFML/imgui-SFML.h"
+#include "bindings/imgui-SFML.h"
 #include <SFML/Graphics/CircleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Sprite.hpp>
@@ -13,7 +13,7 @@ int main()
   const bool       isInit = ImGui::SFML::Init(main_window);
   sf::CircleShape  shape(100.f);
   sf::Clock        deltaClock;
-  sf::Texture texture;
+  sf::Texture      texture;
   texture.loadFromFile("share/textures/gameover.png");
 
   main_window.setFramerateLimit(30);
@@ -46,18 +46,17 @@ int main()
     ImGui::Begin("Window 1");
     {
       // we access the ImGui window size
-      const float window_width = ImGui::GetContentRegionAvail().x;
+      const float window_width  = ImGui::GetContentRegionAvail().x;
       const float window_height = ImGui::GetContentRegionAvail().y;
-      ImVec2 position = ImGui::GetCursorScreenPos();
+      ImVec2      position      = ImGui::GetCursorScreenPos();
 
       ImGui::GetWindowDrawList()->AddImage(static_cast<void*>(&texture),
                                            position,
                                            {position.x + window_width, position.y + window_height},
-                                           {0,1},
-                                           {1,0});
+                                           {0, 1},
+                                           {1, 0});
       ImGui::TextUnformatted("Hello, world!");
     }
-//    ImGui::SFML::Render(main_window);
     ImGui::End();
 
     ImGui::Begin("Button window");

@@ -8,13 +8,13 @@ project(hello_imgui_sfml
 
 ## Set the project as an executable target # 1
 add_executable(${PROJECT_NAME}
-  src/ImguiSFML/imgui-SFML.cpp
+  src/bindings/imgui-SFML.cpp
   src/main.cpp
 )
 
 ## Set the project as an executable target # 2
 add_executable(${PROJECT_NAME}_multi
-  src/ImguiSFML/imgui-SFML.cpp
+  src/bindings/imgui-SFML.cpp
   src/main2.cpp
 )
 
