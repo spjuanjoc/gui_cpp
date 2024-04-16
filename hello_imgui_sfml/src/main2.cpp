@@ -22,6 +22,7 @@ int main()
   {
     // Main window event processing
     sf::Event event{};
+
     while (window.pollEvent(event))
     {
       ImGui::SFML::ProcessEvent(window, event);
@@ -32,8 +33,9 @@ int main()
           childWindow.close();
         }
         window.close();
-        ImGui::SFML::Shutdown();  // will shutdown all windows
-        return 0;                 // return here so that we don't call Update/Render
+        ImGui::SFML::Shutdown();
+
+        return 0;
       }
     }
 

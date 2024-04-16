@@ -69,3 +69,7 @@ target_link_libraries(${PROJECT_NAME}_multi
 target_include_directories(${PROJECT_NAME}_multi PRIVATE include)
 
 target_compile_features(${PROJECT_NAME}_multi PRIVATE cxx_std_20)
+
+
+## Copy resources to the bin directory
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/share DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
