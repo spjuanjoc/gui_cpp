@@ -1,0 +1,18 @@
+[requires]
+  fmt/10.0.0
+  imgui/1.90.5
+#  opengl/system
+  glfw/3.3.6
+  glew/2.2.0
+  glad/0.1.36
+  glm/0.9.9.8
+
+[generators]
+  cmake_find_package
+
+[imports]
+  ./res/bindings, imgui_impl_glfw.cpp -> ../bindings
+  ./res/bindings, imgui_impl_opengl3.cpp -> ../bindings
+  ./res/bindings, imgui_impl_glfw.h -> ../bindings
+  ./res/bindings, imgui_impl_opengl3.h -> ../bindings
+  ./res/bindings, imgui_impl_opengl3_loader.h -> ../bindings
