@@ -8,5 +8,8 @@ some "Hello world" examples for each one. Some of them are cross-platform:
 - SFML
 - ImGUI + SFML
 - Qt6
+- Qt5
 - wxWidgets
 - raylib
+- OpenGL
+
