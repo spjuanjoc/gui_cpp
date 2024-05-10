@@ -6,7 +6,7 @@
 int main(int argc, char** argv)
 {
   QApplication application(argc, argv);
-  QPushButton  button("Hello world!", nullptr);
+  QPushButton  button("Hello Qt5", nullptr);
   auto slider = new QSlider(Qt::Vertical);
   auto layout = new QGridLayout();
 

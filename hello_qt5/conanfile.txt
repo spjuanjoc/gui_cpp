@@ -1,0 +1,10 @@
+[requires]
+  #fmt/8.0.0
+  #libffi/3.4.4
+  qt/5.15.9
+
+[generators]
+  cmake_find_package
+
+[options]
+  qt:shared=True
