@@ -1,7 +1,7 @@
 ---
-BasedOnStyle: Mozilla
+BasedOnStyle: Microsoft
 AccessModifierOffset: -2
-AlignAfterOpenBracket: Align
+AlignAfterOpenBracket: AlwaysBreak
 AlignConsecutiveAssignments: Consecutive
 AlignConsecutiveDeclarations: Consecutive
 AlignConsecutiveMacros: Consecutive
@@ -13,13 +13,13 @@ AllowAllConstructorInitializersOnNextLine: true
 AllowAllParametersOfDeclarationOnNextLine: false
 AllowShortBlocksOnASingleLine: Always
 AllowShortCaseLabelsOnASingleLine: false
-AllowShortEnumsOnASingleLine: true
+AllowShortEnumsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: InlineOnly
 AllowShortIfStatementsOnASingleLine: Never
-AllowShortLambdasOnASingleLine: All
+AllowShortLambdasOnASingleLine: None
 AllowShortLoopsOnASingleLine: false
-AlwaysBreakAfterDefinitionReturnType: None
-AlwaysBreakAfterReturnType: None
+#AlwaysBreakAfterDefinitionReturnType: None
+AlwaysBreakAfterReturnType: TopLevel
 AlwaysBreakBeforeMultilineStrings: true
 AlwaysBreakTemplateDeclarations: Yes
 BinPackArguments: false
@@ -27,26 +27,30 @@ BinPackParameters: false
 BreakBeforeBinaryOperators: All
 BreakBeforeBraces: Allman
 BreakBeforeTernaryOperators: true
-BreakConstructorInitializers: BeforeColon
+BreakConstructorInitializers: BeforeComma
 BreakInheritanceList: AfterColon
 BreakStringLiterals: false
 ColumnLimit: 120
-ConstructorInitializerAllOnOneLineOrOnePerLine: true
-ConstructorInitializerIndentWidth: 2
+ConstructorInitializerAllOnOneLineOrOnePerLine: false
+ConstructorInitializerIndentWidth: 0
 ContinuationIndentWidth: 2
-Cpp11BracedListStyle: true
+Cpp11BracedListStyle: false
 DerivePointerAlignment: false
 DisableFormat: false
 ExperimentalAutoDetectBinPacking: false
 FixNamespaceComments: true
 IncludeBlocks: Regroup
 IncludeCategories:
-  - Regex:        '^<([A-Za-z0-9\/-_])+>' # std system headers have the lowest priority
-    Priority:     3
-  #  - Regex:        '^<other/'
-  #    Priority:     2
-  - Regex:        '^"([A-Za-z0-9.\/-_])+"' # Local headers have the highest priority
-    Priority:     1
+  - Regex:         '^((<|")(gtest|gmock|catch))' # test headers have the lowest priority
+    Priority:      5
+  - Regex:         '<[[:alnum:].]+>' # std headers
+    Priority:      4
+  - Regex:         '^"([A-Za-z0-9.\/-_])+"'
+    Priority:      3
+    CaseSensitive: true
+  - Regex:         '^<([A-Za-z0-9\/-_])+.h>'
+    Priority:      2
+    CaseSensitive: true
 IndentCaseLabels: true
 IndentPPDirectives: BeforeHash
 IndentWidth: 2
@@ -62,16 +66,17 @@ SortIncludes: CaseSensitive
 SortUsingDeclarations: true
 SpaceAfterCStyleCast: true
 SpaceBeforeAssignmentOperators: true
+SpaceBeforeCpp11BracedList: true
 SpaceBeforeParens: ControlStatements
 SpaceBeforeInheritanceColon: true
-SpaceInEmptyParentheses: false
 SpacesBeforeTrailingComments: 2
+SpaceInEmptyParentheses: false
 SpacesInAngles: false
 SpacesInCStyleCastParentheses: false
 SpacesInContainerLiterals: false
 SpacesInParentheses: false
 SpacesInSquareBrackets: false
-Standard: Auto
+Standard: c++20
 TabWidth: 2
 UseTab: Never
 ...
