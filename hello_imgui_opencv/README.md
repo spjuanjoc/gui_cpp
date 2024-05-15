@@ -11,3 +11,12 @@ Steps:
   - Create a sf::Texture from the image
   - Add the texture to a sf::Sprite
   - Draw the sprite
+
+The input image is loaded with cv::imread, processed in opencv to apply a median
+blur, then loaded into sfml to a sprite, and rendered via imgui.
+
+## Output
+
+The expected result is:
+
+![expected.png](docs/expected.png)
