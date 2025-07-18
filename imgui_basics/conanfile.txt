@@ -1,6 +1,9 @@
 [requires]
-  fmt/8.0.0
-  imgui-sfml/2.2@bincrafters/stable
+  fmt/11.2.0
+  imgui-sfml/2.6.1
 
 [generators]
-  cmake_find_package
+  CMakeDeps
+
+[layout]
+  cmake_layout

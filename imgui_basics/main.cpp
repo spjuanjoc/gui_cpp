@@ -1,9 +1,12 @@
+#include <fmt/format.h>
+
+#include <array>
+#include <imgui.h>
+
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/System/Clock.hpp>
 #include <SFML/Window/Event.hpp>
-#include <fmt/format.h>
 #include <imgui-SFML.h>
-#include <imgui.h>
 
 constexpr auto font_filename = "share/calibri-font-family/calibri-regular.ttf";
 constexpr auto font_size = 22.0f;

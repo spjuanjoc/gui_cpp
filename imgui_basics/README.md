@@ -10,8 +10,8 @@ allows to:
 
 ## Uses
 
-- CMake
-- std 17
-- conan + bincrafters
+- CMake > 3.24
+- std > 17
+- conan 2.x
 - ImGUI + SFML
 - fmt
