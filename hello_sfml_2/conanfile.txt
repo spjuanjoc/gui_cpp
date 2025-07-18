@@ -1,5 +1,8 @@
 [requires]
-  sfml/2.6.1
+  sfml/2.6.2
 
 [generators]
-  cmake_find_package
+  CMakeDeps
+
+[layout]
+  cmake_layout

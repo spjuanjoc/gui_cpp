@@ -2,8 +2,6 @@
 
 This is a "Hello world" GUI using the Simple and Fast Multimedia Library SFML
 
-The conan recipe is stored in bincrafters.
-
 
 ## See
 
