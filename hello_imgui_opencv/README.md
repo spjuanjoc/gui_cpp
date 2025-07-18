@@ -1,6 +1,6 @@
 # Hello ImGui with OpenCV
 
-This is a "Hello World" for ImGUI using OpenCV 4.5 in Ubuntu Jammy 20.04, with
+This is a "Hello World" for ImGUI using OpenCV in Ubuntu, with
 SFML as back-end.
 
 Steps:
