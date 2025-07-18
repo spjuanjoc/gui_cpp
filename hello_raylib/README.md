@@ -1,20 +1,18 @@
 # Hello Raylib
 
-This is a "Hello World" example of a GUI using raylib version 3.5.
+This is a "Hello World" example of a GUI using raylib version 5.5.
 
 ## Requirements
 
-- CMake
-- std 11
-- conan
+- CMake > 3.24
+- conan 2
 
 
 ## Build
 
 ```shell
 mkdir build && cd build
-conan install .. --build=missing
-cmake -DCMAKE_MODULE_PATH=$PWD -DCMAKE_BUILD_TYPE=Debug ..
+cmake .. -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES=/path/to/conan_provider.cmake -DCMAKE_BUILD_TYPE=Debug
 cmake --build .
 ```
 

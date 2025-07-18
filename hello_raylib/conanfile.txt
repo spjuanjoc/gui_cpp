@@ -1,5 +1,8 @@
 [requires]
-  raylib/3.5.0
+  raylib/5.5
 
 [generators]
-  cmake_find_package
+  CMakeDeps
+
+[layout]
+  cmake_layout
