@@ -1,17 +1,19 @@
 # Hello ImGui
 
 This is a "Hello World" for ImGUI. ImGUI requires a backend. This example uses
-SFML as backend, with an already combined library ImGui-SFML from the
-conan-bincrafters [recipe](https://bincrafters.jfrog.io/ui/repos/tree/Properties/conan%2Fbincrafters)
+a null backend to compile and link imgui, create a context, and run headless
+with no inputs, no graphics output. This is useful to test building, but you
+cannot interact with anything here.
 
-ImGui includes some features that go on top of SFML
+The example can be found in the 
+[ocornut imgui github](https://github.com/ocornut/imgui/blob/master/examples/example_null/main.cpp)
 
-[Example](https://eliasdaler.github.io/using-imgui-with-sfml-pt1/)
+## Versions
 
-## Uses
-
-- CMake
-- std 17
-- conan + bincrafters
-- ImGUI + SFML
-- fmt
+| Tool  | Version |
+|:------|:--------|
+| CMake | >3.24   |
+| std   | >c++20  |
+| conan | >2.x    |
+| ImGUI | >1.92.0 |
+| fmt   | >11.0.0 |

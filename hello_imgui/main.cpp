@@ -1,46 +1,41 @@
-#include <SFML/Graphics/RenderWindow.hpp>
-#include <SFML/System/Clock.hpp>
-#include <SFML/Window/Event.hpp>
-#include <imgui-SFML.h>
+#include <fmt/core.h>
 #include <imgui.h>
 
-void pollMainWindow(sf::RenderWindow& main_window, sf::Event& event)
-{
-  while (main_window.pollEvent(event))
-  {
-    ImGui::SFML::ProcessEvent(event);
+#include <iostream>
+#include <string>
 
-    if (event.type == sf::Event::Closed)
-    {
-      main_window.close();
-    }
-  }
-}
 
 int main()
 {
-  sf::RenderWindow main_window(sf::VideoMode(640, 480), "ImGui - Window");
-  main_window.setFramerateLimit(60);
-  sf::Clock delta_clock{};
+  std::cout << fmt::format("Hello {}!\n", "world");
+  IMGUI_CHECKVERSION();
+  ImGui::CreateContext();
+  ImGuiIO& io = ImGui::GetIO();
 
-  ImGui::SFML::Init(main_window);
-  ImGui::GetStyle().ScaleAllSizes(2.0f);
-  ImGui::GetIO().FontGlobalScale = 2.0f;
+  // Build atlas
+  unsigned char* tex_pixels = nullptr;
+  std::int32_t   width, height;
 
-  while (main_window.isOpen())
+  io.Fonts->GetTexDataAsRGBA32(&tex_pixels, &width, &height);
+
+  for (std::size_t n = 0; n < 20; n++)
   {
-    sf::Event event{};
-    pollMainWindow(main_window, event);
-    ImGui::SFML::Update(main_window, delta_clock.restart());
+    std::cout << fmt::format("NewFrame() {:>2}\n", n);
+    io.DisplaySize = ImVec2(1920, 1080);
+    io.DeltaTime   = 1.0f / 60.0f;
+    ImGui::NewFrame();
 
-    ImGui::Begin("Box1");
-    ImGui::TextUnformatted("Hello world from ImGUI + SFML");
-    ImGui::End();
+    static float number = 0.0f;
+    ImGui::Text("Hello, world!");
+    ImGui::SliderFloat("float", &number, 0.0f, 1.0f);
+    ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
+    ImGui::ShowDemoWindow(nullptr);
 
-    main_window.clear();
-    ImGui::SFML::Render(main_window);
-    main_window.display();
+    ImGui::Render();
   }
 
-  ImGui::SFML::Shutdown();
+  std::cout << "DestroyContext()\n";
+  ImGui::DestroyContext();
+
+  return 0;
 }
