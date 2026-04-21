@@ -1,12 +1,15 @@
 [requires]
-  gtk/system
   fmt/11.2.0
+  imgui/1.92.0
+  opencv/4.5.5
+
+  flac/1.4.2
+
+  sfml/2.6.1
+
 
 [generators]
   CMakeDeps
 
 [layout]
   cmake_layout
-
-#[options]
-#  gtk:shared=True

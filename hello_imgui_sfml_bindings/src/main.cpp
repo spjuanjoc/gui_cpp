@@ -20,6 +20,7 @@ int main()
   shape.setFillColor(sf::Color::Green);
   ImGui::GetStyle().ScaleAllSizes(2.0);
   ImGui::GetIO().FontGlobalScale = 2.0;
+  bool is_open = true;
 
   while (main_window.isOpen() && isInit)
   {
@@ -42,22 +43,26 @@ int main()
     ImGui::ShowMetricsWindow();
     ImGui::ShowDemoWindow();
 
-
-    ImGui::Begin("Window 1");
+    if (is_open)
     {
-      // we access the ImGui window size
-      const float window_width  = ImGui::GetContentRegionAvail().x;
-      const float window_height = ImGui::GetContentRegionAvail().y;
-      ImVec2      position      = ImGui::GetCursorScreenPos();
+      ImGui::Begin("Window 1", &is_open);
+      {
+        ImGui::Text(fmt::format("is open: {}", is_open).c_str());
+        // we access the ImGui window size
+        const float window_width  = ImGui::GetContentRegionAvail().x;
+        const float window_height = ImGui::GetContentRegionAvail().y;
+        ImVec2      position      = ImGui::GetCursorScreenPos();
 
-      ImGui::GetWindowDrawList()->AddImage(static_cast<void*>(&texture),
-                                           position,
-                                           {position.x + window_width, position.y + window_height},
-                                           {0, 1},
-                                           {1, 0});
-      ImGui::TextUnformatted("Hello, world!");
+        ImGui::GetWindowDrawList()->AddImage(
+          static_cast<void*>(&texture),
+          position,
+          { position.x + window_width, position.y + window_height },
+          { 0, 1 },
+          { 1, 0 });
+        ImGui::TextUnformatted("Hello, world!");
+      }
+      ImGui::End();
     }
-    ImGui::End();
 
     ImGui::Begin("Button window");
     {

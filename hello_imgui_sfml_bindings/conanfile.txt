@@ -1,11 +1,11 @@
-#[options]
-#  gtk:shared=True
-
 [requires]
-  gtk/system
+  fmt/11.2.0
+  imgui/1.92.0
+  sfml/2.6.2
 
 [generators]
   CMakeDeps
 
 [layout]
   cmake_layout
+
