@@ -7,6 +7,11 @@
 #include <portable-file-dialogs.h>
 #include <fmt/format.h>
 
+void runProcess()
+{
+  ImGui::TextUnformatted("Running some process");
+}
+
 std::string openFileDialog()
 {
   const auto selection = pfd::open_file("Select a file").result();
@@ -21,48 +26,76 @@ std::string openFileDialog()
   return file_path;
 }
 
-void pollMainWindow(sf::RenderWindow& main_window, sf::Event& event)
+void pollMainWindow(sf::RenderWindow& main_window)
 {
-  while (main_window.pollEvent(event))
+  while (auto event = main_window.pollEvent())
   {
-    ImGui::SFML::ProcessEvent(event);
+    ImGui::SFML::ProcessEvent(main_window, *event);
 
-    if (event.type == sf::Event::Closed)
+    if (event->is<sf::Event::Closed>())
     {
       main_window.close();
     }
   }
 }
 
-int main()
+void
+doWork(std::string& value, bool& is_running)
 {
-  sf::RenderWindow main_window(sf::VideoMode(640, 480), "ImGui - Window");
-  main_window.setFramerateLimit(60);
-  sf::Clock delta_clock{};
+  if (ImGui::Button("Select a file"))
+  {
+    value = openFileDialog();
+  }
 
-  [[maybe_unused]]
-  bool isLoaded = ImGui::SFML::Init(main_window);
-  ImGui::GetStyle().ScaleAllSizes(2.0f);
-  ImGui::GetIO().FontGlobalScale = 2.0f;
+  ImGui::SameLine();
+  ImGui::TextUnformatted(fmt::format("{}", value).c_str());
+
+  if (!value.empty() && value != "empty")
+  {
+    if (ImGui::Button("Run"))
+    {
+      is_running = true;
+    }
+
+    if (is_running)
+    {
+      ImGui::SameLine();
+      runProcess();
+    }
+  }
+}
+
+void
+runMainLoop(sf::RenderWindow& main_window)
+{
+  sf::Clock delta_clock;
   std::string value = "empty";
+  bool is_running = false;
 
   while (main_window.isOpen())
   {
-    sf::Event event{};
-    pollMainWindow(main_window, event);
+    pollMainWindow(main_window);
     ImGui::SFML::Update(main_window, delta_clock.restart());
 
-    ImGui::TextUnformatted(fmt::format("File: ({})", value).c_str());
-
-    if (ImGui::Button("Some Button"))
-    {
-      value = openFileDialog();
-    }
+    doWork(value, is_running);
 
     main_window.clear();
     ImGui::SFML::Render(main_window);
     main_window.display();
   }
+}
+
+int main()
+{
+  sf::RenderWindow main_window(sf::VideoMode({1200, 230}), "ImGui - Window");
+  main_window.setFramerateLimit(60);
+
+  [[maybe_unused]]
+  bool isLoaded = ImGui::SFML::Init(main_window);
+  ImGui::GetStyle().ScaleAllSizes(2.0f);
+  ImGui::GetIO().FontGlobalScale = 2.0f;
+
+  runMainLoop(main_window);
 
   ImGui::SFML::Shutdown();
 
