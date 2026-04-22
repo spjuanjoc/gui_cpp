@@ -1,6 +1,6 @@
 [requires]
   fmt/12.1.0
-  imgui-sfml/2.6.1
+  imgui-sfml/3.0
   portable-file-dialogs/0.1.0
 
 [generators]
